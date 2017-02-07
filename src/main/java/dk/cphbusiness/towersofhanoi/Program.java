@@ -12,10 +12,17 @@ public class Program {
     Thread.sleep(500);
     }
   
+  private static void move(int count, Tower source, Tower target, Tower intermediate) throws InterruptedException {
+    if (count == 0) return;
+    move(count - 1, source, intermediate, target);
+    source.moveTo(target);
+    print();
+    move(count - 1, intermediate, target, source);
+    }
+  
   public static void main(String[] args) throws InterruptedException {
     print();
-    a.moveTo(c);
-    print();
+    move(10, a, c, b);
     }
   
   }
